@@ -84,5 +84,12 @@ Profit Margin =
       Cause: TotalCost direction wrong
       Solution: Corrected measure: Profit = Sales – Cost
 		
+🔹 Key Learnings
+
+✔ Debugged SSIS data-type mismatches
+✔ Configured SSAS DataSource impersonation
+✔ Built hierarchies & relationships correctly
+✔ Integrated Power BI with SSAS for live analysis
+✔ Documented project for portfolio & GitHub visibility
 
 		
