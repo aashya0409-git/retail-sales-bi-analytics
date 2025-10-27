@@ -1,0 +1,9 @@
+GeographyID,City,StateProvince,CountryCode,CountryName,Region
+100,Toronto,Ontario,CA,Canada,NA
+101,Mississauga,Ontario,CA,Canada,NA
+102,Vancouver,British Columbia,CA,Canada,NA
+103,Surrey,British Columbia,CA,Canada,NA
+200,New Yrok,New York,US,United States,NA
+201,Los Angeles,Calif.,US,United States,NA
+202,Seattle,Washington,US,United States,NA
+203,Miami,Florida,US,United States,NA

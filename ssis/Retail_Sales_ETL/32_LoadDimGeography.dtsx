@@ -1,0 +1,951 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2025 4:10:01 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PRUTHVI"
+  DTS:CreatorName="PRUTHVI\HP"
+  DTS:DTSID="{E672E9D6-77A7-4C7E-8C3D-AB1F8178B8BC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{180097A8-ABD7-4864-9DBB-ADE95CEF3BC1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PRUTHVI\SQLSERVER2022.Retail_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4B54A2CB-BF58-4C8E-9120-811116302411}"
+      DTS:ObjectName="PRUTHVI\SQLSERVER2022.Retail_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=PRUTHVI\SQLSERVER2022;Initial Catalog=Retail_DW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{4B54A2CB-BF58-4C8E-9120-811116302411}PRUTHVI\SQLSERVER2022.Retail_DW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DimGeography"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{CE80A832-1DC9-4886-AF35-61F3D953F62A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DimGeography"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DimGeography\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DimGeography\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimGeography\Data Conversion.Inputs[Data Conversion Input].Columns[City]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="City"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\DimGeography\Data Conversion.Inputs[Data Conversion Input].Columns[StateProvince]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="StateProvince"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[StateProvince]" />
+                    <inputColumn
+                      refId="Package\DimGeography\Data Conversion.Inputs[Data Conversion Input].Columns[CountryCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="CountryCode"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[CountryCode]" />
+                    <inputColumn
+                      refId="Package\DimGeography\Data Conversion.Inputs[Data Conversion Input].Columns[CountryName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="CountryName"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[CountryName]" />
+                    <inputColumn
+                      refId="Package\DimGeography\Data Conversion.Inputs[Data Conversion Input].Columns[Region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Region"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[Region]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DimGeography\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[City_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[City_W]"
+                      name="City_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[City]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[StateProvince_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[StateProvince_W]"
+                      name="StateProvince_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[StateProvince]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[CountryCode_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[CountryCode_W]"
+                      name="CountryCode_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[CountryCode]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[CountryName_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[CountryName_W]"
+                      name="CountryName_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[CountryName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[Region_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[Region_W]"
+                      name="Region_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[Region]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DimGeography\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimGeography\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DimGeography\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimGeography\Derived Column.Inputs[Derived Column Input].Columns[City_W]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="City_W"
+                      lineageId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[City_W]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimGeography\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DimGeography\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimGeography\Derived Column.Outputs[Derived Column Output].Columns[OriginalCity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DimGeography\Derived Column.Outputs[Derived Column Output].Columns[OriginalCity]"
+                      name="OriginalCity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[City_W]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">City_W</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimGeography\Derived Column.Outputs[Derived Column Output].Columns[CurrentCity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DimGeography\Derived Column.Outputs[Derived Column Output].Columns[CurrentCity]"
+                      name="CurrentCity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[City_W]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">City_W</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimGeography\Derived Column.Outputs[Derived Column Output].Columns[EffectiveDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DimGeography\Derived Column.Outputs[Derived Column Output].Columns[EffectiveDate]"
+                      name="EffectiveDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimGeography\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DimGeography\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimGeography\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimGeography\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimGeography\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimGeography\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimGeography\DimGeography data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DimGeography data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    GeographyID,
+    City_Clean           AS City,
+    StateProvince_Clean  AS StateProvince,
+    CountryCode_Clean    AS CountryCode,
+    CountryName_Clean    AS CountryName,
+    Region
+FROM stg.vw_Geographies_clean;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimGeography\DimGeography data.Connections[OleDbConnection]"
+                  connectionManagerID="{8143DBBE-4000-4B4E-AA72-000A52F6A171}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PRUTHVI_SQLSERVER2022.Retail_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[GeographyID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].ExternalColumns[GeographyID]"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[GeographyID]"
+                      name="GeographyID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="100"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].ExternalColumns[StateProvince]"
+                      length="100"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[StateProvince]"
+                      name="StateProvince"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[CountryCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].ExternalColumns[CountryCode]"
+                      length="10"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[CountryCode]"
+                      name="CountryCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].ExternalColumns[CountryName]"
+                      length="100"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      name="CountryName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[Region]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                      length="100"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].ExternalColumns[GeographyID]"
+                      dataType="i4"
+                      name="GeographyID" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].ExternalColumns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="StateProvince" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].ExternalColumns[CountryCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].ExternalColumns[CountryName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="CountryName" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Region" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[GeographyID]"
+                      dataType="i4"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[GeographyID]"
+                      name="GeographyID" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[StateProvince]"
+                      name="StateProvince" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[CountryCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[CountryCode]"
+                      name="CountryCode" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[CountryName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[CountryName]"
+                      name="CountryName" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimGeography\DimGeography DW data"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DimGeography DW data"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimGeography]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimGeography\DimGeography DW data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PRUTHVI\SQLSERVER2022.Retail_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[PRUTHVI\SQLSERVER2022.Retail_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].Columns[GeographyID]"
+                      cachedDataType="i4"
+                      cachedName="GeographyID"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[GeographyID]"
+                      lineageId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output].Columns[GeographyID]" />
+                    <inputColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].Columns[OriginalCity]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="OriginalCity"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[OriginalCity]"
+                      lineageId="Package\DimGeography\Derived Column.Outputs[Derived Column Output].Columns[OriginalCity]" />
+                    <inputColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].Columns[CurrentCity]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="CurrentCity"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[CurrentCity]"
+                      lineageId="Package\DimGeography\Derived Column.Outputs[Derived Column Output].Columns[CurrentCity]" />
+                    <inputColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].Columns[StateProvince_W]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="StateProvince_W"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[StateProvince]"
+                      lineageId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[StateProvince_W]" />
+                    <inputColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].Columns[CountryCode_W]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CountryCode_W"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      lineageId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[CountryCode_W]" />
+                    <inputColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].Columns[CountryName_W]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="CountryName_W"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[CountryName]"
+                      lineageId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[CountryName_W]" />
+                    <inputColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].Columns[Region_W]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Region_W"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      lineageId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output].Columns[Region_W]" />
+                    <inputColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].Columns[EffectiveDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EffectiveDate"
+                      externalMetadataColumnId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveDate]"
+                      lineageId="Package\DimGeography\Derived Column.Outputs[Derived Column Output].Columns[EffectiveDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                      dataType="i4"
+                      name="GeographyKey" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[GeographyID]"
+                      dataType="i4"
+                      name="GeographyID" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[OriginalCity]"
+                      dataType="wstr"
+                      length="100"
+                      name="OriginalCity" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[CurrentCity]"
+                      dataType="wstr"
+                      length="100"
+                      name="CurrentCity" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[StateProvince]"
+                      dataType="wstr"
+                      length="100"
+                      name="StateProvince" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[CountryName]"
+                      dataType="wstr"
+                      length="100"
+                      name="CountryName" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="100"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveDate]"
+                      dataType="wstr"
+                      length="27"
+                      name="EffectiveDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimGeography\DimGeography DW data.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography DW data.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimGeography\DimGeography DW data.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimGeography\DimGeography DW data.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimGeography\DimGeography DW data.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DimGeography.Paths[Data Conversion Output]"
+              endId="Package\DimGeography\Derived Column.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\DimGeography\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DimGeography.Paths[Derived Column Output]"
+              endId="Package\DimGeography\DimGeography DW data.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DimGeography\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DimGeography.Paths[OLE DB Source Output]"
+              endId="Package\DimGeography\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\DimGeography\DimGeography data.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\DimGeography"
+          TopLeft="371.928572208602,156.147058691481" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DimGeography">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\DimGeography\DimGeography data"
+          TopLeft="311.928572080878,60.5588234811506" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\DimGeography\DimGeography DW data"
+          TopLeft="312.642857732821,320.735293867627" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\DimGeography\Data Conversion"
+          TopLeft="325.714286407646,151.411764573164" />
+        <EdgeLayout
+          Id="Package\DimGeography.Paths[OLE DB Source Output]"
+          TopLeft="400.621429244262,102.158823481151">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.2529410920135"
+              Start="0,0"
+              End="0,41.7529410920135">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.7529410920135" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DimGeography\Derived Column"
+          TopLeft="326.428572123452,234.764705676572" />
+        <EdgeLayout
+          Id="Package\DimGeography.Paths[Data Conversion Output]"
+          TopLeft="403.071429265549,193.011764573164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.7529411034084"
+              Start="0,0"
+              End="0,34.2529411034084">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.2529411034084" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimGeography.Paths[Derived Column Output]"
+          TopLeft="405.735714928137,276.364705676572">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.3705881910549"
+              Start="0,0"
+              End="0,36.8705881910549">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.8705881910549" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimGeography\DimGeography data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimGeography\DimGeography DW data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

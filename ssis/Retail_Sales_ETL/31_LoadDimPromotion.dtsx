@@ -1,0 +1,646 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2025 1:47:48 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PRUTHVI"
+  DTS:CreatorName="PRUTHVI\HP"
+  DTS:DTSID="{D0A11E0F-EDA0-4F46-93E2-95F798C3C147}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="31_LoadDimPromotion"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{07D177DB-2FB8-4DFE-9B1A-F77DF60FEEAD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PRUTHVI\SQLSERVER2022.Retail_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A40C3D38-B521-4990-B654-C446005AA82D}"
+      DTS:ObjectName="PRUTHVI\SQLSERVER2022.Retail_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=PRUTHVI\SQLSERVER2022;Initial Catalog=Retail_DW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-31_LoadDimPromotion-{A40C3D38-B521-4990-B654-C446005AA82D}PRUTHVI\SQLSERVER2022.Retail_DW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DimPromotion"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C8B5CA5D-38FB-4FD5-8F24-B7F687786FAC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DimPromotion"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DimPromotion\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DimPromotion\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimPromotion\Data Conversion.Inputs[Data Conversion Input].Columns[PromotionName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="PromotionName"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[PromotionName]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimPromotion\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DimPromotion\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimPromotion\Data Conversion.Outputs[Data Conversion Output].Columns[PromotionName_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\DimPromotion\Data Conversion.Outputs[Data Conversion Output].Columns[PromotionName_W]"
+                      name="PromotionName_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[PromotionName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimPromotion\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DimPromotion\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimPromotion\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimPromotion\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimPromotion\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimPromotion\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimPromotion\DimPromotion Data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DimPromotion Data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[Promotions_raw]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH src AS (
+  SELECT
+    PromotionID,
+    LTRIM(RTRIM(PromotionName)) AS PromotionName,
+    LTRIM(RTRIM(StartDate))      AS StartDateTxt,
+    LTRIM(RTRIM(EndDate))        AS EndDateTxt,
+    LTRIM(RTRIM(DiscountPct))    AS DiscountTxt
+  FROM stg.Promotions_raw
+),
+norm AS (
+  SELECT
+    PromotionID,
+    PromotionName,
+    TRY_CONVERT(date, NULLIF(StartDateTxt,'')) AS StartDate,
+    TRY_CONVERT(date, NULLIF(EndDateTxt,''))   AS EndDate,
+    TRY_CONVERT(decimal(5,2), REPLACE(DiscountTxt, '%','')) AS DiscountPct
+  FROM src
+),
+ranked AS (
+  SELECT *,
+         ROW_NUMBER() OVER (
+           PARTITION BY PromotionID
+           ORDER BY ISNULL(EndDate,'9999-12-31') DESC,
+                    ISNULL(StartDate,'1900-01-01') DESC,
+                    ISNULL(DiscountPct,0) DESC
+         ) AS rn
+  FROM norm
+)
+SELECT PromotionID, PromotionName, StartDate, EndDate, DiscountPct
+FROM ranked
+WHERE rn = 1;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimPromotion\DimPromotion Data.Connections[OleDbConnection]"
+                  connectionManagerID="{8143DBBE-4000-4B4E-AA72-000A52F6A171}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PRUTHVI_SQLSERVER2022.Retail_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[PromotionID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].ExternalColumns[PromotionID]"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[PromotionID]"
+                      name="PromotionID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[PromotionName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].ExternalColumns[PromotionName]"
+                      length="200"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[PromotionName]"
+                      name="PromotionName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[StartDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
+                      length="10"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[StartDate]"
+                      name="StartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[EndDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
+                      length="10"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[EndDate]"
+                      name="EndDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[DiscountPct]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].ExternalColumns[DiscountPct]"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[DiscountPct]"
+                      name="DiscountPct"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].ExternalColumns[PromotionID]"
+                      dataType="i4"
+                      name="PromotionID" />
+                    <externalMetadataColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].ExternalColumns[PromotionName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="PromotionName" />
+                    <externalMetadataColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="EndDate" />
+                    <externalMetadataColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].ExternalColumns[DiscountPct]"
+                      dataType="numeric"
+                      name="DiscountPct"
+                      precision="5"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[PromotionID]"
+                      dataType="i4"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[PromotionID]"
+                      name="PromotionID" />
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[PromotionName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[PromotionName]"
+                      name="PromotionName" />
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[StartDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[StartDate]"
+                      name="StartDate" />
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[EndDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[EndDate]"
+                      name="EndDate" />
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[DiscountPct]"
+                      dataType="numeric"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[DiscountPct]"
+                      name="DiscountPct"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimPromotion\DimPromotion DW table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DimPromotion DW table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimPromotion]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimPromotion\DimPromotion DW table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PRUTHVI\SQLSERVER2022.Retail_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[PRUTHVI\SQLSERVER2022.Retail_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].Columns[PromotionID]"
+                      cachedDataType="i4"
+                      cachedName="PromotionID"
+                      externalMetadataColumnId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].ExternalColumns[PromotionID]"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[PromotionID]" />
+                    <inputColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].Columns[StartDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="StartDate"
+                      externalMetadataColumnId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[StartDate]" />
+                    <inputColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].Columns[EndDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="EndDate"
+                      externalMetadataColumnId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[EndDate]" />
+                    <inputColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].Columns[DiscountPct]"
+                      cachedDataType="numeric"
+                      cachedName="DiscountPct"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].ExternalColumns[DiscountPct]"
+                      lineageId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output].Columns[DiscountPct]" />
+                    <inputColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].Columns[PromotionName_W]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="PromotionName_W"
+                      externalMetadataColumnId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].ExternalColumns[PromotionName]"
+                      lineageId="Package\DimPromotion\Data Conversion.Outputs[Data Conversion Output].Columns[PromotionName_W]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].ExternalColumns[PromotionKey]"
+                      dataType="i4"
+                      name="PromotionKey" />
+                    <externalMetadataColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].ExternalColumns[PromotionID]"
+                      dataType="i4"
+                      name="PromotionID" />
+                    <externalMetadataColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].ExternalColumns[PromotionName]"
+                      dataType="wstr"
+                      length="200"
+                      name="PromotionName" />
+                    <externalMetadataColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="EndDate" />
+                    <externalMetadataColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input].ExternalColumns[DiscountPct]"
+                      dataType="numeric"
+                      name="DiscountPct"
+                      precision="5"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimPromotion\DimPromotion DW table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimPromotion\DimPromotion DW table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimPromotion\DimPromotion DW table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimPromotion\DimPromotion DW table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DimPromotion.Paths[Data Conversion Output]"
+              endId="Package\DimPromotion\DimPromotion DW table.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DimPromotion\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DimPromotion.Paths[OLE DB Source Output]"
+              endId="Package\DimPromotion\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\DimPromotion\DimPromotion Data.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\DimPromotion"
+          TopLeft="336.21428641829,163.794117508308" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DimPromotion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DimPromotion\DimPromotion Data"
+          TopLeft="326.214286397002,74.3235293514382" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\DimPromotion\DimPromotion DW table"
+          TopLeft="315.500000468322,250.735293981577" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\DimPromotion\Data Conversion"
+          TopLeft="327.142857839258,154.470588099895" />
+        <EdgeLayout
+          Id="Package\DimPromotion.Paths[OLE DB Source Output]"
+          TopLeft="408.07857211813,115.923529351438">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.5470587484564"
+              Start="0,0"
+              End="0,31.0470587484564">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.0470587484564" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimPromotion.Paths[Data Conversion Output]"
+          TopLeft="408.12142915379,196.070588099895">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.6647058816825"
+              Start="0,0"
+              End="0,47.1647058816825">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.1647058816825" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimPromotion\DimPromotion Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimPromotion\DimPromotion DW table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

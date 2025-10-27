@@ -1,0 +1,24 @@
+
+# Visual Studio / temp
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+bin/
+obj/
+
+# SSIS/SSAS build outputs & backups
+**/bin/
+**/obj/
+*.abf
+*.rdl.data
+*.cache
+
+# Power BI cache/temp
+*.pbitool.json
+.pbix.local
+
+# OS junk
+Thumbs.db
+.DS_Store

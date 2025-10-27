@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="PRUTHVI_SQLSERVER2022.Retail_Staging"
+  DTS:DTSID="{8143DBBE-4000-4B4E-AA72-000A52F6A171}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=PRUTHVI\SQLSERVER2022;Initial Catalog=Retail_Staging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Retail_Sales_ETL-{8143DBBE-4000-4B4E-AA72-000A52F6A171}PRUTHVI\SQLSERVER2022.Retail_Staging;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

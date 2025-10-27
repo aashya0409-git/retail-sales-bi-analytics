@@ -1,0 +1,996 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2025 4:23:16 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PRUTHVI"
+  DTS:CreatorName="PRUTHVI\HP"
+  DTS:DTSID="{99B8E83C-62FA-4BF2-B5F7-B7F18073CBFF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{B070FC8A-2AB1-4C14-AFF2-49B2B04A39C2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PRUTHVI\SQLSERVER2022.Retail_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C6A3A730-ADA0-42C6-B2C2-4EFC6A9E3242}"
+      DTS:ObjectName="PRUTHVI\SQLSERVER2022.Retail_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=PRUTHVI\SQLSERVER2022;Initial Catalog=Retail_DW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{C6A3A730-ADA0-42C6-B2C2-4EFC6A9E3242}PRUTHVI\SQLSERVER2022.Retail_DW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DimCustomer"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{89DEC79C-59BC-4885-BB93-75F8C0E39AC9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DimCustomer"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DimCustomer\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DimCustomer\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimCustomer\Data Conversion.Inputs[Data Conversion Input].Columns[FirstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="FirstName"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\Data Conversion.Inputs[Data Conversion Input].Columns[LastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="LastName"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\Data Conversion.Inputs[Data Conversion Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="Email"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\Data Conversion.Inputs[Data Conversion Input].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8000"
+                      cachedName="Phone"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\Data Conversion.Inputs[Data Conversion Input].Columns[City]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="City"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\Data Conversion.Inputs[Data Conversion Input].Columns[StateProvince]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="StateProvince"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[StateProvince]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\Data Conversion.Inputs[Data Conversion Input].Columns[CountryCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="CountryCode"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[CountryCode]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\Data Conversion.Inputs[Data Conversion Input].Columns[PostalCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="PostalCode"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[PostalCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DimCustomer\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[FirstName_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[FirstName_W]"
+                      name="FirstName_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[FirstName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[LastName_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[LastName_W]"
+                      name="LastName_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[LastName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[Email_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[Email_W]"
+                      name="Email_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[Email]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[Phone_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[Phone_W]"
+                      name="Phone_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[Phone]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[City_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[City_W]"
+                      name="City_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[City]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[StateProvince_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[StateProvince_W]"
+                      name="StateProvince_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[StateProvince]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[CountryCode_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[CountryCode_W]"
+                      name="CountryCode_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[CountryCode]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[PostalCode_W]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[PostalCode_W]"
+                      name="PostalCode_W"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[PostalCode]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DimCustomer\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimCustomer\DimCustomer data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DimCustomer data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+  CustomerID,
+  FirstName,
+  LastName,
+  Email,
+  Phone,
+  City_Clean          AS City,
+  StateProvince_Clean AS StateProvince,
+  CountryCode_Clean   AS CountryCode,
+  PostalCode
+FROM stg.vw_Customers_clean;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimCustomer\DimCustomer data.Connections[OleDbConnection]"
+                  connectionManagerID="{8143DBBE-4000-4B4E-AA72-000A52F6A171}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PRUTHVI_SQLSERVER2022.Retail_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      length="100"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      length="100"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="200"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      length="8000"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="100"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[StateProvince]"
+                      length="100"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[StateProvince]"
+                      name="StateProvince"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[CountryCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[CountryCode]"
+                      length="10"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[CountryCode]"
+                      name="CountryCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      length="20"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8000"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="StateProvince" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[CountryCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PostalCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      dataType="i4"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8000"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[StateProvince]"
+                      name="StateProvince" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[CountryCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[CountryCode]"
+                      name="CountryCode" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimCustomer\DimCustomer DW data"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DimCustomer DW data"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimCustomer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimCustomer\DimCustomer DW data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PRUTHVI\SQLSERVER2022.Retail_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[PRUTHVI\SQLSERVER2022.Retail_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].Columns[FirstName_W]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="FirstName_W"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[FirstName_W]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].Columns[LastName_W]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="LastName_W"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[LastName_W]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].Columns[Email_W]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Email_W"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[Email_W]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].Columns[Phone_W]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Phone_W"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[Phone_W]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].Columns[City_W]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="City_W"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[City_W]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].Columns[StateProvince_W]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="StateProvince_W"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[StateProvince]"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[StateProvince_W]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].Columns[CountryCode_W]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CountryCode_W"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[CountryCode_W]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].Columns[PostalCode_W]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="PostalCode_W"
+                      externalMetadataColumnId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                      lineageId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output].Columns[PostalCode_W]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="100"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="100"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="200"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="50"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="100"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[StateProvince]"
+                      dataType="wstr"
+                      length="100"
+                      name="StateProvince" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="20"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      dataType="wstr"
+                      length="27"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                      dataType="wstr"
+                      length="27"
+                      name="EndDate" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[IsCurrent]"
+                      dataType="bool"
+                      name="IsCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input].ExternalColumns[HashDiff]"
+                      dataType="bytes"
+                      length="32"
+                      name="HashDiff" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimCustomer\DimCustomer DW data.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimCustomer\DimCustomer DW data.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimCustomer\DimCustomer DW data.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimCustomer\DimCustomer DW data.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DimCustomer.Paths[Data Conversion Output]"
+              endId="Package\DimCustomer\DimCustomer DW data.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DimCustomer\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DimCustomer.Paths[OLE DB Source Output]"
+              endId="Package\DimCustomer\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\DimCustomer\DimCustomer data.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\DimCustomer"
+          TopLeft="286.928572027659,104.147058737061" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DimCustomer">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\DimCustomer\DimCustomer data"
+          TopLeft="354.071429313446,72.0294117063903" />
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\DimCustomer\DimCustomer DW data"
+          TopLeft="360.50000069184,263.382352741429" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\DimCustomer\Data Conversion"
+          TopLeft="362.142857913764,168.999999851865" />
+        <EdgeLayout
+          Id="Package\DimCustomer.Paths[OLE DB Source Output]"
+          TopLeft="438.307143613605,113.62941170639">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.3705881454747"
+              Start="0,0"
+              End="0,47.8705881454747">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.8705881454747" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimCustomer.Paths[Data Conversion Output]"
+          TopLeft="439.742857913764,210.599999851865">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.9571427780755,52.7823528895638"
+              Start="0,0"
+              End="13.9571427780755,45.2823528895638">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.3911764447819" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.3911764447819"
+                    Point2="0,26.3911764447819"
+                    Point3="4,26.3911764447819" />
+                  <mssgle:LineSegment
+                    End="9.95714277807554,26.3911764447819" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.95714277807554,26.3911764447819"
+                    Point2="13.9571427780755,26.3911764447819"
+                    Point3="13.9571427780755,30.3911764447819" />
+                  <mssgle:LineSegment
+                    End="13.9571427780755,45.2823528895638" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimCustomer\DimCustomer data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimCustomer\DimCustomer DW data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

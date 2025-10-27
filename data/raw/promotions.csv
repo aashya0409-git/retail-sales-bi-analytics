@@ -1,0 +1,4 @@
+PromotionID,PromotionName,StartDate,EndDate,DiscountPct
+1,Holiday Sale,2024-12-01,2024-12-31,10.0
+2,New Year Promo,2025-01-01,2025-01-15,5.0
+3,Clearance,2025-02-01,2025-02-28,15.0
