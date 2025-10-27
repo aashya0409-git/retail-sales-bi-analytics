@@ -56,7 +56,7 @@ See [docs/ARCHITECTURE.md](docs/architecture/architecture.md.txt) for data model
 
 ## Author  
 
-**Aashya Bodugula**  
+**Aashya M**  
 📍 Toronto, Canada  
 📧 [aashya0409@gmail.com](mailto:aashya0409@gmail.com)  
 🔗 [LinkedIn](https://www.linkedin.com/in/aashyam/)  
