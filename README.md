@@ -44,7 +44,7 @@ This project demonstrates the design of a full Microsoft BI pipeline — from ra
 
 ## How to Run Locally  
 
-See [docs/SETUP.md](docs/SETUP.md) for detailed setup instructions.  
+See [docs/SETUP.md](docs/setup.md.txt) for detailed setup instructions.  
 
 ---
 
