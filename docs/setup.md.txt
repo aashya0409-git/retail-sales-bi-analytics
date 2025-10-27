@@ -1,0 +1,72 @@
+# Setup Guide — Retail Sales Analytics  
+
+Follow these steps to run the project locally on your system.  
+
+---
+
+## Prerequisites  
+
+- Microsoft SQL Server 2019 / 2022  
+- SQL Server Data Tools (SSDT) for Visual Studio 2022  
+- SQL Server Integration Services (SSIS)  
+- SQL Server Analysis Services (SSAS)  
+- Power BI Desktop (latest version)  
+- Git & GitHub Desktop  
+
+---
+
+## Create Databases  
+
+Open **SQL Server Management Studio (SSMS)** and run the following scripts in order:  
+
+1. `src/sql/00_create_databases.sql`  
+2. `src/sql/01_schema/*.sql`  
+3. `src/sql/02_seed/*.sql`  
+
+This creates the staging (`Retail_Staging`) and warehouse (`Retail_DW`) databases and loads initial data.  
+
+---
+
+## Configure & Run ETL (SSIS)  
+
+1. Open Visual Studio → `src/ssis/Retail_Sales_ETL.sln`  
+2. Check connection managers for your SQL instance name.  
+3. Run packages in order:
+   - Load Staging CSVs  
+   - Load Dimensions (`DimCustomer`, `DimProduct`, `DimGeography`, `DimPromotion`, `DimDate`)  
+   - Load FactInternetSales  
+
+All data-type conversions are handled with Derived Columns and Data Conversions.
+
+---
+
+## Deploy & Process SSAS Cube  
+
+1. Open `src/ssas/Retail_Sales_Analysis.sln`  
+2. Update Data Source → use your SQL Server instance.  
+3. Deploy the cube to Analysis Services.  
+4. Right-click cube → **Process** → select “Process Full”.  
+
+---
+
+## Connect Power BI  
+
+1. Open `powerbi/Retail_Sales_Analytics.pbix`  
+2. Connect *Live* to your SSAS cube  
+   - or import data from `Retail_DW` for demo.  
+3. Refresh visuals and verify KPI values.
+
+---
+
+## Publish or Share  
+
+- Publish the PBIX (Import version) to Power BI Service  
+- Or host the repo publicly on GitHub (for recruiters)
+
+---
+
+## Verification  
+
+- All dimension loads succeed (green checkmarks)  
+- Cube processes with no duplicate key errors  
+- Power BI visuals display positive profit and correct KPIs  

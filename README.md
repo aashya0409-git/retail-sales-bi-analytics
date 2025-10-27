@@ -1,30 +1,70 @@
-# Retail Sales Data Warehouse & BI (MSBI Stack)
+# Retail Sales Analytics — End-to-End Microsoft BI Project  
 
-**Stack:** SQL Server, SSIS (ETL), DQS (Data Quality), SSAS (OLAP Cube), SSRS (Reports)
+**Technologies:** SQL Server | SSIS | SSAS | Power BI | Git & GitHub  
 
-## How to Run (Quick Start)
-1. Open SQL Server Management Studio (SSMS).
-2. Run `sql/01_create_databases.sql` on `master`.
-3. Switch to `Retail_Staging` and run `sql/02_staging_tables.sql` to create staging tables.
-4. Switch to `Retail_DW` and run `sql/03_dw_schema.sql` to create DW tables.
-5. Run `sql/03a_seed_dimdate.sql` to populate `DimDate`.
-6. Load CSVs from `data/raw/` into `stg.*_raw` using SSIS (Project coming soon).
-7. (Optional) Run `sql/04_control_watermark.sql` for incremental loads control table.
-8. Build SSAS cube and SSRS reports (see docs).
+---
 
-## Data
-- CSV samples in `data/raw/`. Includes minor data-quality issues to demonstrate DQS.
+##  Project Summary  
 
-## Docs
-- Add screenshots of SSIS packages, DQS results, SSAS cube explorer, and SSRS reports to `docs/screenshots/`.
-- Architecture diagrams in `docs/architecture/`.
+This project demonstrates the design of a full Microsoft BI pipeline — from raw CSVs to Power BI dashboards — showcasing ETL, data modeling, analytics, and reporting skills. I built it to simulate a real-world retail sales analytics environment, integrating data from multiple sources into a clean, analytical model.  
 
+---
 
-## DQS-free Cleaning (Beginner Friendly)
-Run `sql/04a_reference_cleaning.sql` in `Retail_Staging` to create small reference tables and
-two clean views:
-- `stg.vw_Geographies_clean`
-- `stg.vw_Customers_clean`
+## Quick Highlights  
 
-Then point your SSIS dimension loads at these views instead of the raw tables.
-Extend the `Ref*` tables with more synonyms as you find new variations.
+- **ETL (SSIS):** Extract, clean, and load data from CSVs to a SQL Data Warehouse  
+- **Modeling (SSAS):** Star schema cube with measures, hierarchies, and KPIs  
+- **Visualization (Power BI):** Interactive dashboards with slicers, KPIs, and drillthrough  
+- **Version Control (GitHub):** Structured repo with docs and screenshots  
+
+---
+
+## Repository Structure  
+
+| Folder | Description |
+|--------|--------------|
+| `src/sql` | SQL scripts for schema, seed, and warehouse |
+| `src/ssis` | ETL packages for dimension and fact loads |
+| `src/ssas` | SSAS cube and dimension definitions |
+| `powerbi` | Power BI reports (PBIX import version) |
+| `docs` | Setup guide, architecture notes, screenshots |
+
+---
+
+## Live Demo 
+[Open Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMDliYjg2NTQtMTUzZi00MTc4LTkwYTUtYjZkNjMzZTI3ZDM4IiwidCI6IjkxMzhiMzE3LTk0MjktNDE4Mi05YmRjLTc1M2ZlYmJiMjJiNiJ9)
+
+## Screenshots  
+
+![Executive KPIs](docs/screenshots/executive_kpis.png)
+![Product Performance](docs/screenshots/product_performance.png)
+![Regional Sales](docs/screenshots/regional_sales.png)
+
+---
+
+## How to Run Locally  
+
+See [docs/SETUP.md](docs/SETUP.md) for detailed setup instructions.  
+
+---
+
+## Architecture & Learning  
+
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for data model design, pipeline flow, and issues resolved.  
+
+---
+
+## Author  
+
+**Aashya Bodugula**  
+📍 Toronto, Canada  
+📧 [aashya0409@gmail.com](mailto:aashya0409@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/aashyam/)  
+
+---
+
+## License  
+
+Open source under the MIT License.  
+⭐ If you find this project helpful, please star the repo!
+

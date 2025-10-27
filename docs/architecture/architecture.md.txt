@@ -1,0 +1,88 @@
+# Architecture & Design — Retail Sales Analytics  
+
+---
+
+## 🔹 Overview  
+
+This project replicates a real-world Retail BI system built on the Microsoft BI stack.  
+The goal was to design a complete analytical pipeline from raw data to dashboards.
+
+---
+
+## 🔹 Data Flow  
+Raw CSVs → SSIS ETL → SQL Data Warehouse → SSAS Cube → Power BI Reports
+
+### Layer Responsibilities  
+
+| Layer | Tool | Role |
+|--------|------|------|
+| Ingestion | SSIS | Load, clean, transform CSVs |
+| Storage | SQL Server | Staging + Data Warehouse |
+| Modeling | SSAS | Semantic layer (measures, KPIs) |
+| Visualization | Power BI | Reports and dashboards |
+
+---
+
+## 🔹 Star Schema  
+
+**Fact:** `FactInternetSales`  
+**Dimensions:** `DimCustomer`, `DimProduct`, `DimGeography`, `DimPromotion`, `DimDate`
+
+Relationships:
+
+DimDate (DateKey) ← FactInternetSales (DateKey)
+DimCustomer (CustomerKey) ← FactInternetSales (CustomerKey)
+DimProduct (ProductKey) ← FactInternetSales (ProductKey)
+DimGeography (GeographyKey) ← FactInternetSales (GeographyKey)
+DimPromotion (PromotionKey) ← FactInternetSales (PromotionKey)
+
+---
+
+## 🔹 Measures & Calculations  
+
+```mdx
+Profit = [Measures].[Sales Amount] - [Measures].[Total Cost]
+
+Profit Margin =  
+  IIF([Measures].[Sales Amount] = 0, NULL,  
+      [Measures].[Profit] / [Measures].[Sales Amount])
+
+--KPI: Profit Margin Target = 10 %
+  Green → > 10 %
+  Yellow → 5–10 %
+  Red → < 5 %
+
+---
+
+##🔹 Power BI Dashboards
+
+     Page 1 — Executive KPIs
+              Cards: Sales, Cost, Profit, Margin
+              Line Chart: Sales vs Profit over the Year
+              Slicers: Year, Region, Product Category
+
+     Page 2 — Product Performance
+              Matrix: Category → Subcategory × Year
+              Top 10 Bar Chart by Profit
+              Conditional Formatting: Profit Margin (green → red)
+
+     Page 3 — Customer & Geography
+              Matrix: Region → City (Sales & AOV)
+              Line Chart: Profit Margin by Year + Region Legend
+              
+🔹 Key Issues & Fixes
+    Issue 1: Duplicate key error in DimDate		
+      Cause: Month Name not linked to Month Number	
+      Solution: Created proper hierarchy: Year → Month Number → Month Name
+    Issue 2: Service login denied access to DW	
+      Cause: SSAS service account not mapped	
+      Solution: Created SSAS_ServiceLogin with db_datareader
+    Issue 3: #VALUE! in Excel
+      Cause: Wrong measure type	
+      Solution: Ensured DT_NUMERIC for Profit and Margin
+    Issue 4: Negative profits
+      Cause: TotalCost direction wrong
+      Solution: Corrected measure: Profit = Sales – Cost
+		
+
+		

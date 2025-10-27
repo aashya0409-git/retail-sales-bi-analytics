@@ -1,2 +1,16 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Use Git Large File Storage (LFS) for Power BI files
+*.pbix filter=lfs diff=lfs merge=lfs -text
+
+# Ensure SQL and text files use standard line endings
+*.sql text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.csv text eol=lf
+
+# Normalize Visual Studio project files
+*.sln text eol=crlf
+*.csproj text eol=crlf
+*.dtproj text eol=crlf
+*.dwproj text eol=crlf
+*.bim text eol=crlf
+*.dtsx text eol=crlf
