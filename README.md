@@ -50,7 +50,7 @@ See [docs/SETUP.md](docs/setup.md.txt) for detailed setup instructions.
 
 ## Architecture & Learning  
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for data model design, pipeline flow, and issues resolved.  
+See [docs/ARCHITECTURE.md](docs/architecture/architecture.md.txt) for data model design, pipeline flow, and issues resolved.  
 
 ---
 
